@@ -1,0 +1,77 @@
+<header [class.scrolled]="isScrolled">
+  <div class="header-container">
+    <h1 class="logo"><a routerLink="/">benyaparım</a></h1>
+
+    <nav class="site-nav">
+      <ul>
+        <li>Explore</li>
+
+        <!-- Buranın rengi sıkıntılı burayı da düzelt. a elementinin -->
+        <li><a routerLink="/login">Login</a></li>
+        <li class="signup-button"><a routerLink="/signup">Signup</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<div [class.scrolled]="isScrolledCategoriesMenu" id="categories-menu">
+  <div class="categories-menu-container">
+    <ul>
+      <li class="dropdown">
+        <h3>Graphics & Design</h3>
+        <div class="dropdown-content">
+          <p>Logo Design</p>
+          <p>UX/UI Design</p>
+          <p>3D Modeling</p>
+          <p>Photoshop Editing</p>
+          <p>Illustration</p>
+          <p>Animation</p>
+        </div>
+      </li>
+      <li class="dropdown">
+        <h3>Programming & Tech</h3>
+        <div class="dropdown-content">
+          <p>Web Development</p>
+          <p>Mobile Apps</p>
+          <p>Game Development</p>
+          <p>Software Testing</p>
+          <p>Database Management</p>
+          <p>Technical Support</p>
+        </div>
+      </li>
+      <li class="dropdown">
+        <h3>Video & Animation</h3>
+        <div class="dropdown-content">
+          <p>Video Editing</p>
+          <p>Character Animation</p>
+          <p>Logo Animation</p>
+          <p>Photoshop Editing</p>
+          <p>Illustration</p>
+          <p>Animation</p>
+        </div>
+      </li>
+      <li class="dropdown">
+        <h3>Wrting & Translation</h3>
+        <div class="dropdown-content">
+          <p>Logo Design</p>
+          <p>UX/UI Design</p>
+          <p>3D Modeling</p>
+          <p>Photoshop Editing</p>
+          <p>Illustration</p>
+          <p>Animation</p>
+        </div>
+      </li>
+      <li class="dropdown">
+        <h3>Music & Audio</h3>
+        <div class="dropdown-content">
+          <p>Logo Design</p>
+          <p>UX/UI Design</p>
+          <p>3D Modeling</p>
+          <p>Photoshop Editing</p>
+          <p>Illustration</p>
+          <p>Animation</p>
+        </div>
+      </li>
+    </ul>
+  </div>
+</div>
