@@ -1,0 +1,112 @@
+header {
+  font-size: 1.3rem;
+  border-bottom: 1px solid gainsboro;
+  box-shadow: 0px 2px 4px -2px rgba(0, 0, 0, 0.2);
+  position: sticky;
+  top: 0;
+  width: 100%;
+  background-color: white;
+  z-index: 1000;
+  transition: background-color 0.5s ease;
+}
+
+header.scrolled {
+  background-color: green;
+  color: white;
+}
+
+.header-container {
+  width: 95%;
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.logo {
+  font-size: 1rem;
+  text-transform: uppercase;
+  font-weight: 700;
+}
+
+.site-nav ul {
+  display: flex;
+  padding: 15px;
+}
+
+.site-nav ul li {
+  margin: 20px;
+  padding: 12px;
+  cursor: pointer;
+}
+
+.signup-button {
+  background-color: rgb(38, 202, 154);
+  color: white;
+  border-radius: 4px;
+}
+
+.signup-button a {
+  color: white;
+}
+
+#categories-menu {
+  background-color: white;
+  position: sticky;
+  width: 100%;
+  visibility: hidden;
+  transform: rotateX(90deg);
+  transition: transform 0.4s ease;
+  border-bottom: 1px solid gainsboro;
+
+  /* burası sıkıntılı */
+  top: 116px;
+}
+
+#categories-menu.scrolled {
+  visibility: visible;
+  transform: rotateX(0);
+}
+
+.categories-menu-container {
+  width: 95%;
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  color: darkgrey;
+}
+
+.categories-menu-container ul {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.categories-menu-container .dropdown h3 {
+  cursor: pointer;
+  padding: 15px 0;
+}
+
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #f9f9f9;
+  min-width: 160px;
+  box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+  z-index: 1;
+}
+
+.dropdown-content p {
+  padding: 10px 0;
+  cursor: pointer;
+}
+
+.dropdown-content p:hover {
+  background-color: gainsboro;
+}
+
+li.dropdown:hover .dropdown-content {
+  display: block;
+}
