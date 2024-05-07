@@ -3,6 +3,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ReactiveFormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { AuthService } from '../../services/authService/auth.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-login',
@@ -18,6 +19,7 @@ export class LoginComponent implements OnInit {
   constructor(
     private fb: FormBuilder,
     private authService: AuthService,
+    private router: Router,
   ) {}
 
   ngOnInit(): void {
@@ -33,6 +35,8 @@ export class LoginComponent implements OnInit {
       this.authService.login(this.loginForm.value).subscribe({
         next: (response) => {
           console.log('Login successful', response);
+          console.log('mahmut');
+          this.router.navigate(['/']);
           // Giriş başarılı, kullanıcıyı yönlendir
         },
         error: (error) => {

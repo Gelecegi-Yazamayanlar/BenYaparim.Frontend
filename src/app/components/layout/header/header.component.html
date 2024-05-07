@@ -4,11 +4,27 @@
 
     <nav class="site-nav">
       <ul>
-        <li>Explore</li>
-
-        <!-- Buranın rengi sıkıntılı burayı da düzelt. a elementinin -->
-        <li><a routerLink="/login">Login</a></li>
-        <li class="signup-button"><a routerLink="/signup">Signup</a></li>
+        <li *ngIf="isLoggedIn; else loggedOut">
+          <div class="profile-menu">
+            <a class="profile-link" (click)="toggleDropdown()">
+              <img
+                src="path_to_profile_image.jpg"
+                alt="Profile"
+                class="profile-img"
+              />
+              <span class="username">Berkan Bilgin</span>
+              <i class="arrow-down"></i>
+              <!-- Bu simge için örneğin Font Awesome kullanabilirsiniz -->
+            </a>
+            <div *ngIf="dropdownOpen" class="dropdown">
+              <ul>
+                <li><a routerLink="/profile">Profile</a></li>
+                <li><a routerLink="/settings">Settings</a></li>
+                <li><a (click)="logout()">Logout</a></li>
+              </ul>
+            </div>
+          </div>
+        </li>
       </ul>
     </nav>
   </div>
@@ -75,3 +91,14 @@
     </ul>
   </div>
 </div>
+
+<ng-template #loggedOut>
+  <li>Explore</li>
+  <!-- Buranın rengi sıkıntılı burayı da düzelt. a elementinin -->
+  <li><a routerLink="/login">Login</a></li>
+  <li class="signup-button"><a routerLink="/signup">Signup</a></li>
+</ng-template>
+
+isLoggedIn: {{ isLoggedIn }}
+
+<h1>dropdown Open: {{ dropdownOpen }}</h1>
