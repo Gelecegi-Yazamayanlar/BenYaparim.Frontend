@@ -51,6 +51,10 @@ export class AuthService {
     localStorage.setItem('token', token);
     this.isLoggedInSubject.next(true);
     this.userProfileSubject.next(jwtDecode(token));
+
+    const decodedToken: {[key: string]: any} = jwtDecode(token);
+    const nameClaim = decodedToken['http://schemas.xmlsoap.org/ws/2005/05/identity/claims/name'];
+    console.log("name: " + nameClaim);
   }
 
   checkTokenPresence(): boolean {
