@@ -36,7 +36,7 @@ export class LoginComponent implements OnInit {
         next: (response) => {
           console.log('Login successful', response);
           console.log('mahmut');
-          this.router.navigate(['/']);
+          this.router.navigate(['/dashboard']);
           // Giriş başarılı, kullanıcıyı yönlendir
         },
         error: (error) => {
