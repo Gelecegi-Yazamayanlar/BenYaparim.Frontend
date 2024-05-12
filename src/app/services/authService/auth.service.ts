@@ -19,7 +19,9 @@ export class AuthService {
   private isLoggedInSubject = new BehaviorSubject<boolean>(
     this.checkTokenPresence(),
   );
-  private userProfileSubject = new BehaviorSubject<any>(this.decodeToken());
+  private userProfileSubject = new BehaviorSubject<any>(
+    this.checkUserProfile(),
+  );
 
   constructor(private http: HttpClient) {}
 
@@ -35,6 +37,9 @@ export class AuthService {
 
   logout(): void {
     localStorage.removeItem('token');
+    localStorage.removeItem('name');
+    localStorage.removeItem('email');
+
     this.isLoggedInSubject.next(false);
     this.userProfileSubject.next(null);
   }
@@ -44,21 +49,46 @@ export class AuthService {
   }
 
   getUserProfile(): Observable<any> {
+    //mantık hatası var tokenı olmayan adamdan token isteyen fonksiyon mu olur mk
+
     return this.userProfileSubject.asObservable();
   }
 
   handleAuthentication(token: string): void {
     localStorage.setItem('token', token);
-    this.isLoggedInSubject.next(true);
-    this.userProfileSubject.next(jwtDecode(token));
+    const decodedToken: { [key: string]: any } = this.decodeToken();
+    console.log('getUserProfile Token', decodedToken);
+    const name =
+      decodedToken[
+        'http://schemas.xmlsoap.org/ws/2005/05/identity/claims/name'
+      ];
+    const email =
+      decodedToken[
+        'http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress'
+      ];
+    console.log('name: ' + name);
+    console.log('email: ' + email);
+    localStorage.setItem('name', name);
+    localStorage.setItem('email', email);
+    this.userProfileSubject.next({ name, email });
+    console.log('userProfileSujbject nedir?', this.userProfileSubject);
 
-    const decodedToken: {[key: string]: any} = jwtDecode(token);
-    const nameClaim = decodedToken['http://schemas.xmlsoap.org/ws/2005/05/identity/claims/name'];
-    console.log("name: " + nameClaim);
+    this.isLoggedInSubject.next(true);
   }
 
   checkTokenPresence(): boolean {
     return !!localStorage.getItem('token');
+  }
+
+  private checkUserProfile() {
+    const name = localStorage.getItem('name');
+    const email = localStorage.getItem('email');
+
+    if (name && email) {
+      return { name, email };
+    } else {
+      return null;
+    }
   }
 
   decodeToken(): any {
