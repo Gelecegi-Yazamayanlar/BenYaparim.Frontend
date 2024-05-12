@@ -30,12 +30,11 @@ header.scrolled {
   font-weight: 700;
 }
 
-.site-nav ul {
+.site-nav > ul {
   display: flex;
-  padding: 15px;
 }
 
-.site-nav ul li {
+.site-nav > ul > li {
   margin: 20px;
   padding: 12px;
   cursor: pointer;
@@ -109,4 +108,46 @@ header.scrolled {
 
 li.dropdown:hover .dropdown-content {
   display: block;
+}
+
+.profile-link {
+  display: flex;
+  align-items: center;
+}
+
+.profile-dropdown {
+  position: absolute;
+  background-color: #f9f9f9;
+  min-width: 160px;
+  margin-top: 10px;
+  box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+  z-index: 1;
+}
+
+.dropdown-menu {
+  display: flex;
+  align-items: center;
+}
+
+.dropdown-menu-button {
+  padding: 0 !important;
+}
+
+.dropdown-menu-icon {
+  font-size: 16px;
+  height: auto;
+}
+
+.user-avatar {
+  width: 32px; /* Avatarın genişliği */
+  height: 32px; /* Avatarın yüksekliği */
+  border-radius: 50%; /* Yuvarlak hale getir */
+  background-color: var(--color-primary); /* Arka plan rengi, mavi */
+  color: white; /* Yazı rengi, beyaz */
+  display: flex; /* Flexbox kullanarak içeriği hizala */
+  justify-content: center; /* Yatayda ortala */
+  align-items: center; /* Dikeyde ortala */
+  font-size: 16px; /* Harf büyüklüğü */
+  margin-right: 8px;
+  font-weight: var(--fs-300); /* Harf kalınlığı */
 }

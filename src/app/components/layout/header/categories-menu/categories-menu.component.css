@@ -1,0 +1,58 @@
+#categories-menu {
+  background-color: white;
+
+  /* sticky oldugu zaman content asağı iniyor */
+  position: fixed;
+  width: 100%;
+  visibility: hidden;
+  transform: rotateX(90deg);
+  transition: transform 0.4s ease;
+  border-bottom: 1px solid gainsboro;
+}
+
+#categories-menu.scrolled {
+  visibility: visible;
+  transform: rotateX(0);
+}
+
+.categories-menu-container {
+  width: 95%;
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  color: darkgrey;
+}
+
+.categories-menu-container ul {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.categories-menu-container .dropdown h3 {
+  cursor: pointer;
+  padding: 15px 0;
+}
+
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #f9f9f9;
+  min-width: 160px;
+  box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+  z-index: 1;
+}
+
+.dropdown-content p {
+  padding: 10px 0;
+  cursor: pointer;
+}
+
+.dropdown-content p:hover {
+  background-color: gainsboro;
+}
+
+li.dropdown:hover .dropdown-content {
+  display: block;
+}

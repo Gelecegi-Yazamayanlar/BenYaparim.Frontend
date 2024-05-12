@@ -4,95 +4,61 @@
 
     <nav class="site-nav">
       <ul>
+        <mat-menu #menu="matMenu">
+          <button routerLink="/profile" mat-menu-item>
+            <mat-icon>account_circle</mat-icon>Profile
+          </button>
+          <button routerLink="/settings" mat-menu-item>
+            <mat-icon>settings</mat-icon>Settings
+          </button>
+          <mat-divider></mat-divider>
+          <button (click)="logout()" mat-menu-item>
+            <mat-icon>logout</mat-icon>Log Out
+          </button>
+        </mat-menu>
+
         <li *ngIf="isLoggedIn; else loggedOut">
-          <div class="profile-menu">
+          <div class="dropdown-menu">
+            <div *ngIf="userProfile?.name" class="user-avatar">
+              {{ userProfile.name[0].toUpperCase() }}
+            </div>
+            <button
+              class="dropdown-menu-button"
+              mat-flat-button
+              [matMenuTriggerFor]="menu"
+            >
+              <span></span>
+              {{ userProfile?.name }}
+              <span>
+                <mat-icon class="dropdown-menu-icon"
+                  >expand_more</mat-icon
+                ></span
+              >
+            </button>
+          </div>
+
+          <!-- <div class="profile-menu">
             <a class="profile-link" (click)="toggleDropdown()">
-              <img 
-                src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTMuVZPUguhjwOPqFgeplotL_MmSDTV2Y-dJh72EC8yTQ&s"
-                width="30"
-                height="30"
-                alt="Profile"
-                class="profile-img"
-              />
+              <mat-icon>account_circle</mat-icon>
               <span class="username">Berkan Bilgin</span>
-              <i class="arrow-down"></i>
-              <!-- Bu simge için örneğin Font Awesome kullanabilirsiniz -->
+              <mat-icon class="deneme1">keyboard_arrow_down</mat-icon>
             </a>
-            <div *ngIf="dropdownOpen" class="dropdown">
+            <div *ngIf="dropdownOpen" class="profile-dropdown">
               <ul>
                 <li><a routerLink="/profile">Profile</a></li>
                 <li><a routerLink="/settings">Settings</a></li>
+                <hr class="profile-dropdown-line" />
                 <li><a (click)="logout()">Logout</a></li>
               </ul>
             </div>
-          </div>
+          </div> -->
         </li>
       </ul>
     </nav>
   </div>
 </header>
 
-<div [class.scrolled]="isScrolledCategoriesMenu" id="categories-menu">
-  <div class="categories-menu-container">
-    <ul>
-      <li class="dropdown">
-        <h3>Graphics & Design</h3>
-        <div class="dropdown-content">
-          <p>Logo Design</p>
-          <p>UX/UI Design</p>
-          <p>3D Modeling</p>
-          <p>Photoshop Editing</p>
-          <p>Illustration</p>
-          <p>Animation</p>
-        </div>
-      </li>
-      <li class="dropdown">
-        <h3>Programming & Tech</h3>
-        <div class="dropdown-content">
-          <p>Web Development</p>
-          <p>Mobile Apps</p>
-          <p>Game Development</p>
-          <p>Software Testing</p>
-          <p>Database Management</p>
-          <p>Technical Support</p>
-        </div>
-      </li>
-      <li class="dropdown">
-        <h3>Video & Animation</h3>
-        <div class="dropdown-content">
-          <p>Video Editing</p>
-          <p>Character Animation</p>
-          <p>Logo Animation</p>
-          <p>Photoshop Editing</p>
-          <p>Illustration</p>
-          <p>Animation</p>
-        </div>
-      </li>
-      <li class="dropdown">
-        <h3>Wrting & Translation</h3>
-        <div class="dropdown-content">
-          <p>Logo Design</p>
-          <p>UX/UI Design</p>
-          <p>3D Modeling</p>
-          <p>Photoshop Editing</p>
-          <p>Illustration</p>
-          <p>Animation</p>
-        </div>
-      </li>
-      <li class="dropdown">
-        <h3>Music & Audio</h3>
-        <div class="dropdown-content">
-          <p>Logo Design</p>
-          <p>UX/UI Design</p>
-          <p>3D Modeling</p>
-          <p>Photoshop Editing</p>
-          <p>Illustration</p>
-          <p>Animation</p>
-        </div>
-      </li>
-    </ul>
-  </div>
-</div>
+<app-categories-menu></app-categories-menu>
 
 <ng-template #loggedOut>
   <li>Explore</li>
@@ -100,7 +66,3 @@
   <li><a routerLink="/login">Login</a></li>
   <li class="signup-button"><a routerLink="/signup">Signup</a></li>
 </ng-template>
-
-isLoggedIn: {{ isLoggedIn }}
-
-<h1>dropdown Open: {{ dropdownOpen }}</h1>
