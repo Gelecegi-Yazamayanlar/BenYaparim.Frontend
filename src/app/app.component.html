@@ -1,3 +1,22 @@
+<!-- <ng-container *ngIf="isLoggedIn; else loggedOut">
+  <app-logged-inlayout>
+    <router-outlet></router-outlet>
+  </app-logged-inlayout>
+</ng-container>
+
+<ng-template #loggedOut>
+  <app-layout>
+    <router-outlet></router-outlet>
+  </app-layout>
+</ng-template> -->
+
+@if (isLoggedIn) {
+<app-logged-inlayout>
+  <router-outlet></router-outlet>
+</app-logged-inlayout>
+
+} @else {
 <app-layout>
   <router-outlet></router-outlet>
 </app-layout>
+}
