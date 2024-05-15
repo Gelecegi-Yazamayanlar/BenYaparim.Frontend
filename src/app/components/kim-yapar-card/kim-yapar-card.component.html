@@ -1,0 +1,16 @@
+<div class="card">
+  <div class="card-img-container">
+    <img
+      [src]="'https://picsum.photos/100/100'"
+      alt="{{ product.name }}"
+      class="card-img-top"
+      (load)="onLoad()"
+      [class.hidden]="loading"
+    />
+    <div class="placeholder" *ngIf="loading"></div>
+  </div>
+  <div class="card-body">
+    <h5 class="card-title">{{ product.name }}</h5>
+    <p class="card-text">Price: {{ product.unitPrice | currency }}</p>
+  </div>
+</div>
