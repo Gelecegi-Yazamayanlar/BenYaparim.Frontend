@@ -2,8 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { Form, FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ReactiveFormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
-import { AuthService } from '../../services/authService/auth.service';
-import { IUser } from '../../services/authService/auth.service';
+import { AuthService } from '../../../services/authService/auth.service';
+import { IUser } from '../../../services/authService/auth.service';
 
 @Component({
   selector: 'app-signup',

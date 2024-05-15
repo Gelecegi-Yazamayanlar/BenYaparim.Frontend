@@ -51,6 +51,5 @@ export class HeaderComponent {
   onWindowScroll() {
     const threshold = 100;
     this.isScrolled = window.scrollY > threshold;
-    console.log(window.scrollY);
   }
 }
