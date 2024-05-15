@@ -1,10 +1,14 @@
 import { Routes } from '@angular/router';
-import { HomeComponent } from './home/home.component';
-import { LoginComponent } from './pages/login/login.component';
-import { SignupComponent } from './pages/signup/signup.component';
-import { ProfileComponent } from './pages/profile/profile.component';
+import { HomeComponent } from './pages/home/home.component';
+import { LoginComponent } from './pages/auth/login/login.component';
+import { SignupComponent } from './pages/auth/signup/signup.component';
+import { ProfileComponent } from './pages/auth/profile/profile.component';
 import { DashboardComponent } from './pages/dashboard/dashboard.component';
-import { SettingsComponent } from './pages/settings/settings.component';
+import { SettingsComponent } from './pages/auth/settings/settings.component';
+import { FreelancerOlComponent } from './pages/freelancer-ol/freelancer-ol.component';
+import { KimyaparComponent } from './pages/kimyapar/kimyapar.component';
+import { OrdersComponent } from './pages/orders/orders.component';
+import { WalletComponent } from './pages/wallet/wallet.component';
 
 export const routes: Routes = [
   {
@@ -36,6 +40,26 @@ export const routes: Routes = [
     path: 'settings',
     component: SettingsComponent,
     title: 'Settings',
+  },
+  {
+    path: 'kimyapar',
+    component: KimyaparComponent,
+    title: 'Kim Yapar',
+  },
+  {
+    path: 'orders',
+    component: OrdersComponent,
+    title: 'Siparişlerim',
+  },
+  {
+    path: 'wallet',
+    component: WalletComponent,
+    title: 'Cüzdan',
+  },
+  {
+    path: 'freelancerOl',
+    component: FreelancerOlComponent,
+    title: 'Freelancer Ol',
   },
 ];
 

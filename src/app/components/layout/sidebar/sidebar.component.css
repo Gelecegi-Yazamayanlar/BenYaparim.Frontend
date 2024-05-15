@@ -1,0 +1,24 @@
+.sidebar {
+  background-color: red;
+
+  width: 256px;
+  height: calc(100vh - 75px);
+  position: sticky;
+  top: 75px;
+  display: inline-block;
+}
+
+.sidebar-list {
+  padding-top: 50px;
+}
+
+.sidebar-list-item {
+  display: flex;
+  align-items: center;
+  padding-top: 10px;
+}
+
+.sidebar-list-item-icon {
+  color: white;
+  margin: 10px;
+}
