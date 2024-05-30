@@ -1,0 +1,126 @@
+<form class="form" [formGroup]="signupForm" (ngSubmit)="onSubmit()">
+  <div class="field">
+    <label class="label">First Name</label>
+    <input
+      type="text"
+      class="input"
+      formControlName="firstName"
+      [class.invalid]="
+        signupForm.get('firstName')?.invalid &&
+        (signupForm.get('firstName')?.dirty ||
+          signupForm.get('firstName')?.touched ||
+          isSubmitted)
+      "
+    />
+    <span
+      *ngIf="
+        signupForm.get('firstName')?.hasError('required') &&
+        (signupForm.get('firstName')?.dirty ||
+          signupForm.get('firstName')?.touched ||
+          isSubmitted)
+      "
+      class="error"
+      >This field is required.</span
+    >
+  </div>
+  <div class="field">
+    <label class="label">Last Name</label>
+    <input
+      type="text"
+      class="input"
+      formControlName="lastName"
+      [class.invalid]="
+        signupForm.get('lastName')?.invalid &&
+        (signupForm.get('lastName')?.dirty ||
+          signupForm.get('lastName')?.touched ||
+          isSubmitted)
+      "
+    />
+    <div
+      class="error"
+      *ngIf="
+        signupForm.get('lastName')?.errors &&
+        signupForm.get('lastName')?.touched
+      "
+    >
+      <span *ngIf="signupForm.get('lastName')?.hasError('required')"
+        >Lastname alanı zorunludur.</span
+      >
+      <span *ngIf="signupForm.get('lastName')?.hasError('lastName')"
+        >Geçerli bir lastname adresi giriniz.</span
+      >
+    </div>
+  </div>
+  <div class="field">
+    <label class="label">Email</label>
+    <input
+      type="text"
+      class="input"
+      formControlName="email"
+      [class.invalid]="
+        signupForm.get('email')?.invalid &&
+        (signupForm.get('email')?.dirty ||
+          signupForm.get('email')?.touched ||
+          isSubmitted)
+      "
+    />
+    <div
+      class="error"
+      *ngIf="
+        signupForm.get('email')?.errors && signupForm.get('email')?.touched
+      "
+    >
+      <span *ngIf="signupForm.get('email')?.hasError('required')"
+        >Şifre alanı zorunludur.</span
+      >
+      <span
+        *ngIf="
+          signupForm.get('email')?.touched &&
+          signupForm.get('email')?.hasError('minlength')
+        "
+      >
+        Şifre en az 6 karakter olmalıdır.
+      </span>
+    </div>
+  </div>
+
+  <div class="field">
+    <label class="label">Password</label>
+    <input
+      type="text"
+      class="input"
+      formControlName="password"
+      [class.invalid]="
+        signupForm.get('password')?.invalid &&
+        (signupForm.get('password')?.dirty ||
+          signupForm.get('password')?.touched ||
+          isSubmitted)
+      "
+    />
+    <div
+      class="error"
+      *ngIf="
+        signupForm.get('password')?.errors &&
+        signupForm.get('password')?.touched
+      "
+    >
+      <span *ngIf="signupForm.get('password')?.hasError('required')"
+        >Şifre alanı zorunludur.</span
+      >
+      <span
+        *ngIf="
+          signupForm.get('password')?.touched &&
+          signupForm.get('password')?.hasError('minlength')
+        "
+      >
+        Şifre en az 6 karakter olmalıdır.
+      </span>
+    </div>
+  </div>
+
+  <div>
+    <button [disabled]="signupForm.invalid" type="submit" class="button">
+      Register
+    </button>
+  </div>
+</form>
